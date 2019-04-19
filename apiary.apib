@@ -3,10 +3,18 @@ HOST: http://polls.apiblueprint.org/huggy/v3/
 
 # Huggy API v3
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Welcome to the Huggy API. With it you can managing all agents, contacts and attend your customers, sending and receiving messages. 
+This API allows you to programmatically perform actions on your Company account.    
+
+>This version has the chat entity v3   
 
 # Group Chats
 
 ## chat collection [/chats]     
 
-### List all chats [GET]
+### List all chats [GET]    
+
+Limited to 20 results. The remaining resources (if exists) can be accessed 
+with a query parameter `?page=1` on request url. This pagination begins at `0`
+(first page). If the requested page does not exist, an empty array `[]` is returned
+in the request body.

@@ -24,7 +24,6 @@ in the request body.
 
     + Headers
 
-         
             Accept: application/json
         
         
@@ -42,4 +41,53 @@ in the request body.
                 }
             ]
 
++ Response 404 (application/json)
+
+## Create Chat Collection [chats/{channel}]
+
++ Parameters
+    + channel (required, string, `whatsapp`, `telegram`)... name of the channel.
+
+### Create a new chat [POST]
+
+Available channels:     
+    
+    1: whatsapp     
+    2: email    
+    3: telegram     
+
++ Request  (application/json)    
+    
+    
+    + Headers
+        Content-Type: application/json
+        
+        
+    + Body
+    
+       {
+        "nome": "John-Doe",
+        "phone" 551170707070:,
+        “email”: “john@doe.com”,  
+        “message”: “Hello!”,  
+        “department”: 1,
+        “subject”: “Create a new chat”
+        }
+        
++ Response 200 (application/json)
++ Response 404 (application/json)
+
+
++ Request  (application/json)
+
+   {
+        “name”: “John Doe”,
+        “phone”: 551170707070,
+        "email”: “john@doe.com”,
+        “message”: “Hello!”,
+        “department”: 1,
+        “subject”: “Create a new chat”,
+        “channelID”: 123 (more than an email)
+    }
++ Response 200 (application/json)
 + Response 404 (application/json)

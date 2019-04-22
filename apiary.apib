@@ -19,9 +19,9 @@ in the request body.
 
 + Response 404 (application/json)
 
-   {
-    "message": "Page not found"
-   }
+            {
+             "message": "Page not found"
+            }
    
 ## Create a chat Collection [/chats/{channel}]
 
@@ -38,20 +38,19 @@ The channels of chat can be:
    
 + Request (appliation/json)
 
- + Headers
- 
-  Accept: application/json
+      + Headers     
+      Accept: application/json
  
  + Body
   
-          {
-            “name”: “John Doe”,
-            “phone”: 551170707070,
-            “email”: “john@doe.com”,
-            “message”: “Hello!”,
-            “department”: 1,
-            “subject”: “Create a new chat”
-         }
+    {
+         “name”: “John Doe”,
+         “phone”: 551170707070,
+         “email”: “john@doe.com”,
+         “message”: “Hello!”,
+         “department”: 1,
+         “subject”: “Create a new chat”
+        }
         
 + Response 200 (application/json)   
     
@@ -67,7 +66,7 @@ The channels of chat can be:
   ]
  + Request (appliation/json)
 
-+ Headers
+  + Headers
  
   Accept: application/json
 
@@ -120,7 +119,6 @@ The channels of chat can be:
         “email”: “john@doe.com”,
         }
     ]   
-   
 
 ## Chat messages Collection [/chat/{chat_id}/messages]
 + Parameters 
@@ -155,4 +153,115 @@ The channels of chat can be:
      "Text": "Hello"...
      }
 
++ Response 200 (application/json
+
+[
+    {
+     "Text": "Hello"...
+    }
+]
+
+## Transfer a chat Collection [/chat/{chat_id}/transfer]
+
++ Parameters 
+  + chat_id (required, number)... número identificador
+
+### Transfer a chat for agent [POST]
+
++ Request (application/json)
+
+    + Headers
+    Accept: application/json
+
+    + Body
+    {
+     "agentID": "1234",
+     "message": "transferred successfully"
+    }
++ Response 200 (application/json)
+    [
+        {
+         "agentID": 1234,
+         "message": "transferred successfully"
+        }
+    ]   
+
+## Add agent collection [/chat/{chat_id}/addAgent]
++ Parameters 
+  + chat_id (required, number)... número identificador      
+
+### Add an agent in char [POST]
+
++ Request (application/json)
+
+    + Headers
+    Accept: application/json
+    
+    + Body
+    {
+     "agentID": "1234"
+    }
++ Response 200 (application/json)
+
+[
+    {
+     "agentID": "1234"
+    }
+]
+
+## Assign a chat Collection [/chats/{chat_id}/AssignToMe]
+
++ Parameters 
+  + chat_id (required, number)... número identificador      
+
+### Assign a chat for agent [PUT]
+
++ Request (application/json)
+
+    + Headers
+    Accept: application/json 
+
++ Body
+    {
+       "name": "john Doe",
+       "email": "john@doe.com
+    }
++ Response 200 (application/json)
+
+## Mark read Collection [/chats/{chat_is}/read]
+
++ Parameters 
+  + chat_id (required, number)... número identificador    
+
+### Mark read on chat messages [PUT]
+
++ Request (application/json)
+
+    + Headers
+    Accept: application/json
+
+    + Body
+    {
+    "message": "Hello, my name is John"
+    }
++ Response 200 (application/json)
+
+## Update a Chat Collection [/chats/{chat_id}/department]
+
++ Parameters 
+  + chat_id (required, number)... número identificador
+
+### Updates a chat department [PUT]
+
++ Request (application/json)
+
+    + Headers
+    Accept: application/json
+
+    + Body
+    
+    {
+    "department": "1"
+    }
+    
 + Response 200 (application/json)

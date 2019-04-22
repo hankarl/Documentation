@@ -284,3 +284,20 @@ The channels of chat can be:
     }
 
 + Response 200 (application/json)
+
+## Reopen a char Collection [/chats/{chat_id}/reopen]
+
++ Parameters 
+  + chat_id (required, number)... número identificador
+
+### Reope a chat [PUT]
++ Request (application/json)
+
+    + Headers
+    Accept: application/json
+    
+    + Body
+    {
+    "chat_number": "2";
+    }
++ Response 200 (application/json)

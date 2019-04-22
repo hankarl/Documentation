@@ -1,1 +1,158 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/huggy/v3/
 
+# Huggy API v3
+
+Welcome to the Huggy API. With it you can managing all agents, contacts and attend your customers, sending and receiving messages. 
+This API allows you to programmatically perform actions on your Company account. This version has the chat entity v3   
+
+# Group Chats
+
+## Chat Collection [/chats]     
+
+### List all chats [GET]    
+
+Limited to 20 results. The remaining resources (if exists) can be accessed 
+with a query parameter `?page=1` on request url. This pagination begins at `0`
+(first page). If the requested page does not exist, an empty array `[]` is returned
+in the request body.
+
++ Response 404 (application/json)
+
+   {
+    "message": "Page not found"
+   }
+   
+## Create a chat Collection [/chats/{channel}]
+
++ Parameters
+ + channel (required, string, `whatsapp`)... name of the channel
+
+### Create a new chat [POST]
+
+The channels of chat can be:    
+
+   1: whatsapp      
+   2: telegram      
+   3: email     
+   
++ Request (appliation/json)
+
+ + Headers
+ 
+  Accept: application/json
+ 
+ + Body
+  
+          {
+            “name”: “John Doe”,
+            “phone”: 551170707070,
+            “email”: “john@doe.com”,
+            “message”: “Hello!”,
+            “department”: 1,
+            “subject”: “Create a new chat”
+         }
+        
++ Response 200 (application/json)   
+    
+  [ 
+    {
+       “name”: “John Doe”,
+       “phone”: 551170707070,
+       “email”: “john@doe.com”,
+       “message”: “Hello!”,
+       “department”: 1,
+       “subject”: “Create a new chat”
+    } 
+  ]
+ + Request (appliation/json)
+
++ Headers
+ 
+  Accept: application/json
+
+ + Body
+    {
+       “name”: “John Doe”,
+       “phone”: 551170707070,
+       “email”: “john@doe.com”,
+       “message”: “Hello!”,
+       “department”: 1,
+       “subject”: “Create a new chat”,
+       “channelID”: 123 (more than an email)
+    }
++ Response 200 (application/json)
+ 
+ [
+    {
+       “name”: “John Doe”,
+       “phone”: 551170707070,
+       “email”: “john@doe.com”,
+       “message”: “Hello!”,
+       “department”: 1,
+       “subject”: “Create a new chat”,
+       “channelID”: 123 (more than an email)
+    }
+]
+
+## View a chat Collection [/chat/{chat_id}]
++ Parameters 
+  + chat_id (required, number)... número identificador
+
+### View a char details [GET]
+
++ Request (application/json)
+
++ Headers
+  Accept: application/json
+
++ Body
+        {
+         "chat_id": "1";
+        }
+        
++ Response 200 (application/json)
+    
+    [
+        {
+        “name”: “John Doe”,
+        “phone”: 551170707070,
+        “email”: “john@doe.com”,
+        }
+    ]   
+   
+
+## Chat messages Collection [/chat/{chat_id}/messages]
++ Parameters 
+  + chat_id (required, number)... número identificador      
+
+### List chat Collection [GET]   
+
++ Request Text (application/json)
+
++ Headers
+  Accept: application/json
+
++ Body
+        {
+         "Text": "Huggy API v3"
+        }
+        
++ Response 200 (application/json)
++ Response 201 (application/json)
++ Response 404 (application/json)   
+
+### Add new messages in chat [POST]
+
++ Request (application/json)
+
++ Headers
+  Accept: application/json
+
++ Body
+     
+     {
+     "Text": "Hello"...
+     }
+
++ Response 200 (application/json)

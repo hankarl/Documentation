@@ -301,3 +301,66 @@ The channels of chat can be:
     "chat_number": "2";
     }
 + Response 200 (application/json)
+
+## Moves a chat Collection [/chats/{chat_id}/queue]
++ Parameters 
+  + chat_id (required, number)... número identificador
+
+### Moves a chat for queue [PUT]
+
++ Request (application/json)
+
+    + Headers
+    Accept: application/json
+    
+    + Body
+    {
+    }
+    
++ Response 200 (application/json)
+
+## Changes a chat Collection [/chats/{chat_id}/situation]
+
++ Parameters 
+  + chat_id (required, number)... número identificador
+
+### Chages a chat situation [PUT]
+
++ Request (application/json)
+
+    + Headers
+    Accept: application/json
+    
+    + Body
+    {
+    "situation": "wait_for_chat"
+    }
++ Response 200 (application/json)
+
+## List a chat Collection [/chats/{chat_id}/tags]
++ Parameters 
+  + chat_id (required, number)... número identificador
+
+### List a chat tags [GET]
+
++ Request (application/json)
+
+    + Headers
+    Accept: application/json
+    
+    + Body
+    {
+     "tags": "tag1", "tag2", "tag3"
+    }
+    
++ Response 200 (application/json)
+
+[
+    {
+        "tags": [
+           {"tag": "1"},
+           {"tag": "2"},
+           {"tag": "3"}
+         ]
+    }
+]

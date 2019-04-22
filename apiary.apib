@@ -44,14 +44,14 @@ The channels of chat can be:
  + Body
   
     {
-         “name”: “John Doe”,
+        “name”: “John Doe”,
          “phone”: 551170707070,
          “email”: “john@doe.com”,
          “message”: “Hello!”,
          “department”: 1,
          “subject”: “Create a new chat”
-        }
-        
+    }
+    
 + Response 200 (application/json)   
     
   [ 
@@ -341,7 +341,7 @@ The channels of chat can be:
 + Parameters 
   + chat_id (required, number)... número identificador
 
-### List a chat tags [GET]
+### List a chat tags [PUT]
 
 + Request (application/json)
 
@@ -362,5 +362,24 @@ The channels of chat can be:
            {"tag": "2"},
            {"tag": "3"}
          ]
+    }
+]
+
+## List chats Collection [/chats/?situation=wait_for_chat]
+
+### List chats on queue[GET]
+
++ Response 200 (application/json)
+[
+    {
+    "situation": "wait_for_chat"
+    }
+]
+
+### List chats in attendance [GET]
++ Response 200 (application/json)
+[
+    {
+    "situation": "wait_for_chat"
     }
 ]

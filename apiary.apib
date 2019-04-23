@@ -1,10 +1,48 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/huggy/v3/
+HOST: http://polls.apiblueprint.org/huggy/v3
 
 # Huggy API v3
 
 Welcome to the Huggy API. With it you can managing all agents, contacts and attend your customers, sending and receiving messages. 
 This API allows you to programmatically perform actions on your Company account.
+
+Nossa API nativamente suporta o formato:
+- REST
+    
+    O sistema deve fazer uma solicitação para o URL http://polls.apiblueprint.org/huggy/v3, enviando os parâmetros por GET, POST, PUT or DELETE. Para cada solicitação, a resposta será um objeto JSON, que é detalhado ao longo desta documentação.
+
+# Autenticação
+
+Você deve fornecer um cabeçalho de Autorização em cada solicitação feita, seguindo o formato:
+    
+    `X-Authorization: Bearer xxxxxxxxxx`
+    
+Onde os caracteres `xxxxxxx` significam o token da API da sua empresa ou o token fornecido quando o aplicativo estiver instalado em uma empresa terceirizada.
+
+Você pode obter seu token de API no painel PowerZAP, em configurações, opção de API no campo `Chave de acesso`.
+
+#Headers
+
+- Todos os pedidos também devem incluir os seguintes headers:
+
+        Content-Type:application/json
+        X-Authorization: Bearer xxxxxxxxxx
+
+# Respostas usuais do servidor:
+        
+- 200 `OK` - o pedido foi bem sucedido.
+
+- 201 `Created` - o pedido foi bem sucedido e um cliente, contato ou bate-papo foi criado.
+
+- 204 `Modified` - o pedido foi bem sucedido e um recurso foi modificado.
+
+- 400 `Bad Request` - o pedido não pôde ser entendido ou faltava os parâmetros necessários. Verifique o motivo na resposta do corpo.
+        
+- 401 `Unauthorized` - falha na autenticação ou o usuário não possui permissões para a operação solicitada. Verifique o token da API, ele pode estar errado.
+
+- 404 `Not Found` - o recurso não foi encontrado. Isso pode ser causado por uma ID não existente.
+
+- 501 `Request Failed` - pode ser causada por um método de solicitação incorreto.
 
 # Group Chats
 

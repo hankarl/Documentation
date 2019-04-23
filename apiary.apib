@@ -4,7 +4,7 @@ HOST: http://polls.apiblueprint.org/huggy/v3/
 # Huggy API v3
 
 Welcome to the Huggy API. With it you can managing all agents, contacts and attend your customers, sending and receiving messages. 
-This API allows you to programmatically perform actions on your Company account. This version has the chat entity v3   
+This API allows you to programmatically perform actions on your Company account.
 
 # Group Chats
 
@@ -45,11 +45,11 @@ The channels of chat can be:
   
     {
         “name”: “John Doe”,
-         “phone”: 551170707070,
-         “email”: “john@doe.com”,
-         “message”: “Hello!”,
-         “department”: 1,
-         “subject”: “Create a new chat”
+        “phone”: 551170707070,
+        “email”: “john@doe.com”,
+        “message”: “Hello!”,
+        “department”: 1,
+        “subject”: “Create a new chat”
     }
     
 + Response 200 (application/json)   
@@ -64,7 +64,8 @@ The channels of chat can be:
        “subject”: “Create a new chat”
     } 
   ]
- + Request (appliation/json)
+  
++ Request (appliation/json)
 
   + Headers
  
@@ -99,7 +100,7 @@ The channels of chat can be:
   + chat_id (required, number)... número identificador
 
 ### View a char details [GET]
-
+Mediante um ID, `chat_id`, obtenha os dados detalhados do chat.
 + Request (application/json)
 
 + Headers
@@ -113,18 +114,18 @@ The channels of chat can be:
 + Response 200 (application/json)
     
     [
-        {
+       {
         “name”: “John Doe”,
         “phone”: 551170707070,
         “email”: “john@doe.com”,
         }
-    ]   
+    ]
 
 ## Chat messages Collection [/chat/{chat_id}/messages]
 + Parameters 
   + chat_id (required, number)... número identificador      
 
-### List chat Collection [GET]   
+### List chat Collection [GET]  
 
 + Request Text (application/json)
 
@@ -141,7 +142,7 @@ The channels of chat can be:
 + Response 404 (application/json)   
 
 ### Add new messages in chat [POST]
-
+Encontre dentro dessa coleção recursos para listar seu chat e obter uma simples informações ou adicionar uma nova mensagem
 + Request (application/json)
 
 + Headers
@@ -226,7 +227,7 @@ The channels of chat can be:
        "name": "john Doe",
        "email": "john@doe.com
     }
-+ Response 200 (application/json)
++ Response 204 (application/json)
 
 ## Mark read Collection [/chats/{chat_is}/read]
 
@@ -244,7 +245,7 @@ The channels of chat can be:
     {
     "message": "Hello, my name is John"
     }
-+ Response 200 (application/json)
++ Response 204 (application/json)
 
 ## Update a Chat Collection [/chats/{chat_id}/department]
 
@@ -264,7 +265,7 @@ The channels of chat can be:
     "department": "1"
     }
     
-+ Response 200 (application/json)
++ Response 204 (application/json)
 
 ## Close a chat Collection [/chats/{chat_id}/close]
 
@@ -283,7 +284,7 @@ The channels of chat can be:
     "chat_number": "2";
     }
 
-+ Response 200 (application/json)
++ Response 204 (application/json)
 
 ## Reopen a char Collection [/chats/{chat_id}/reopen]
 
@@ -300,7 +301,7 @@ The channels of chat can be:
     {
     "chat_number": "2";
     }
-+ Response 200 (application/json)
++ Response 204 (application/json)
 
 ## Moves a chat Collection [/chats/{chat_id}/queue]
 + Parameters 
@@ -317,7 +318,7 @@ The channels of chat can be:
     {
     }
     
-+ Response 200 (application/json)
++ Response 204 (application/json)
 
 ## Changes a chat Collection [/chats/{chat_id}/situation]
 

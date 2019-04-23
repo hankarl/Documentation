@@ -3,13 +3,12 @@ HOST: http://polls.apiblueprint.org/huggy/v3
 
 # Huggy API v3
 
-Bem-vindo à API do Huggy. Com ele você pode gerenciar todos os agentes, contatos
-e atender seus clientes, enviando e recebendo mensagens. Essa API permite que você execute ações de forma programática em sua conta corporativa.
+Bem-vindo à API Huggy. Com ele, você pode gerenciar todos os agentes, contatos e atender seus clientes, enviar e receber mensagens. Esta API permite que você realize programaticamente ações na conta da sua empresa.
 
 Nossa API nativamente suporta o formato:
 - REST
     
-    O sistema deve fazer uma solicitação para o URL http://polls.apiblueprint.org/huggy/v3, enviando os parâmetros por GET, POST, PUT or DELETE. Para cada solicitação, a resposta será um objeto JSON, que é detalhado ao longo desta documentação.
+    O sistema deve fazer uma solicitação para o URL <a href="https://huggyapiv30.docs.apiary.io/#">Huggy API v3</a>, enviando os parâmetros por GET, POST, PUT or DELETE. Para cada solicitação, a resposta será um objeto JSON, que é detalhado ao longo desta documentação.
 
 # Autenticação
 
@@ -19,7 +18,7 @@ Você deve fornecer um cabeçalho de Autorização em cada solicitação feita, 
     
 Onde os caracteres `xxxxxxx` significam o token da API da sua empresa ou o token fornecido quando o aplicativo estiver instalado em uma empresa terceirizada.
 
-Você pode obter seu token de API no painel PowerZAP, em configurações, opção de API no campo `Chave de acesso`.
+Você pode obter seu token de API no painel Huggy, em configurações, opção de API no campo `Chave de acesso`.
 
 #Headers
 
@@ -82,9 +81,10 @@ Limitado a 20 resultados. Os recursos remanescentes (se existir) podem ser acess
 
 The channels of chat can be:    
 
-   1: whatsapp      
-   2: telegram      
-   3: email     
+  
+  1: whatsapp      
+  2: telegram      
+  3: email   
    
 + Request (appliation/json)
 
@@ -152,7 +152,7 @@ The channels of chat can be:
   + chat_id (required, number)... número identificador
 
 ### View a char details [GET]
-Mediante um ID, `chat_id`, obtenha os dados detalhados do chat.
+Mediante um `ID`, obtenha os dados detalhados do chat.
 + Request (application/json)
 
 + Headers
@@ -301,6 +301,8 @@ Marcar leitura em mensagem de chat. Um `ID` será requerido para isso.
   + chat_id (required, number)... número identificador
 
 ### Updates a chat department [PUT]
+
+Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será necessário para especificar sua atualização.
 
 + Request (application/json)
 

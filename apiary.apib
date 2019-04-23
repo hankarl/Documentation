@@ -52,6 +52,21 @@ Você pode obter seu token de API no painel PowerZAP, em configurações, opçã
 
 Limitado a 20 resultados. Os recursos remanescentes (se existir) podem ser acessados com um parâmetro de consulta `?page=1` em url pedido. Esta paginação começa em `0` (primeira página). Se a página solicitada não existir, uma matriz vazia `[]` é retornada no corpo da solicitação.
 
++ Response 200 (application/json)
+
+
+        [
+          {
+            "id": 1,
+            "name": "John Doe"
+          },
+          {
+            "id": 2,
+            "name": "Clark Parker"
+          }
+          
+        ]
+
 + Response 404 (application/json)
 
             {
@@ -204,6 +219,8 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
 ### Transfer a chat for agent [POST]
 
+Envie uma mensagem de confirmação utilizando requisição `POST`
+
 + Request (application/json)
 
     + Headers
@@ -219,7 +236,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
 ## Add agent collection [/chat/{chat_id}/addAgent]
 + Parameters 
-  + chat_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      id (required, number)... número identificador      
+  + chat_id (required, number)... número identificador                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      id (required, number)... número identificador      
 
 ### Add an agent in char [POST]
 
@@ -242,6 +259,8 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
 ### Assign a chat for agent [PUT]
 
+Edite um recurso atribuindo um bate-papo para o agente `ID`
+
 + Request (application/json)
 
     + Headers
@@ -249,7 +268,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
     X-Authorization: Bearer xxxxxxxxxx
 
 + Body
-    {
+    {  "id": 63,
        "name": "john Doe",
        "email": "john@doe.com
     }
@@ -262,6 +281,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
 ### Mark read on chat messages [PUT]
 
+Marcar leitura em mensagem de chat. Um `ID` será requerido para isso.
 + Request (application/json)
 
     + Headers
@@ -270,6 +290,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Body
     {
+    "id": 34,
     "message": "Hello, my name is John"
     }
 + Response 204 (application/json)

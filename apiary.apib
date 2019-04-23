@@ -3,8 +3,8 @@ HOST: http://polls.apiblueprint.org/huggy/v3
 
 # Huggy API v3
 
-Welcome to the Huggy API. With it you can managing all agents, contacts and attend your customers, sending and receiving messages. 
-This API allows you to programmatically perform actions on your Company account.
+Bem-vindo à API do Huggy. Com ele você pode gerenciar todos os agentes, contatos
+e atender seus clientes, enviando e recebendo mensagens. Essa API permite que você execute ações de forma programática em sua conta corporativa.
 
 Nossa API nativamente suporta o formato:
 - REST
@@ -50,10 +50,7 @@ Você pode obter seu token de API no painel PowerZAP, em configurações, opçã
 
 ### List all chats [GET]    
 
-Limited to 20 results. The remaining resources (if exists) can be accessed 
-with a query parameter `?page=1` on request url. This pagination begins at `0`
-(first page). If the requested page does not exist, an empty array `[]` is returned
-in the request body.
+Limitado a 20 resultados. Os recursos remanescentes (se existir) podem ser acessados com um parâmetro de consulta `?page=1` em url pedido. Esta paginação começa em `0` (primeira página). Se a página solicitada não existir, uma matriz vazia `[]` é retornada no corpo da solicitação.
 
 + Response 404 (application/json)
 
@@ -78,6 +75,7 @@ The channels of chat can be:
 
       + Headers     
       Accept: application/json
+      X-Authorization: Bearer xxxxxxxxxx
  
  + Body
   
@@ -108,6 +106,7 @@ The channels of chat can be:
   + Headers
  
   Accept: application/json
+  X-Authorization: Bearer xxxxxxxxxx
 
  + Body
     {
@@ -143,6 +142,7 @@ Mediante um ID, `chat_id`, obtenha os dados detalhados do chat.
 
 + Headers
   Accept: application/json
+  X-Authorization: Bearer xxxxxxxxxx
 
 + Body
         {
@@ -169,6 +169,7 @@ Mediante um ID, `chat_id`, obtenha os dados detalhados do chat.
 
 + Headers
   Accept: application/json
+  X-Authorization: Bearer xxxxxxxxxx
 
 + Body
         {
@@ -185,6 +186,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
 + Headers
   Accept: application/json
+  X-Authorization: Bearer xxxxxxxxxx
 
 + Body
      
@@ -192,13 +194,8 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
      "Text": "Hello"...
      }
 
-+ Response 200 (application/json
-
-[
-    {
-     "Text": "Hello"...
-    }
-]
++ Response 200 (application/json)
++ Response 2001 (application/json)
 
 ## Transfer a chat Collection [/chat/{chat_id}/transfer]
 
@@ -211,6 +208,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
 
     + Body
     {
@@ -218,12 +216,6 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
      "message": "transferred successfully"
     }
 + Response 200 (application/json)
-    [
-        {
-         "agentID": 1234,
-         "message": "transferred successfully"
-        }
-    ]   
 
 ## Add agent collection [/chat/{chat_id}/addAgent]
 + Parameters 
@@ -235,18 +227,13 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
     
     + Body
     {
      "agentID": "1234"
     }
 + Response 200 (application/json)
-
-[
-    {
-     "agentID": "1234"
-    }
-]
 
 ## Assign a chat Collection [/chats/{chat_id}/AssignToMe]
 
@@ -258,7 +245,8 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 + Request (application/json)
 
     + Headers
-    Accept: application/json 
+    Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
 
 + Body
     {
@@ -278,6 +266,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
 
     + Body
     {
@@ -296,6 +285,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
 
     + Body
     
@@ -316,6 +306,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
     
     + Body
     {
@@ -334,6 +325,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
     
     + Body
     {
@@ -351,6 +343,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
     
     + Body
     {
@@ -369,6 +362,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
     
     + Body
     {
@@ -386,6 +380,7 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
 
     + Headers
     Accept: application/json
+    X-Authorization: Bearer xxxxxxxxxx
     
     + Body
     {
@@ -393,16 +388,6 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter uma simple
     }
     
 + Response 200 (application/json)
-
-[
-    {
-        "tags": [
-           {"tag": "1"},
-           {"tag": "2"},
-           {"tag": "3"}
-         ]
-    }
-]
 
 ## List chats Collection [/chats/?situation=wait_for_chat]
 

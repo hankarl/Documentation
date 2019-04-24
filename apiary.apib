@@ -75,7 +75,7 @@ Limitado a 20 resultados. Os recursos remanescentes (se existir) podem ser acess
 ## Create a chat Collection [/chats/{channel}]
 
 + Parameters
- + channel (required, string, `whatsapp`)... name of the channel
+ + channel (required, string, `whatsapp`, `telegram`, `email`)... name of the channel
 
 ### Create a new chat [POST]
 
@@ -151,24 +151,27 @@ The channels of chat can be:
 + Parameters 
   + chat_id (required, number)... número identificador
 
-### View a char details [GET]
+### View a chat details [GET]
 Mediante um `ID`, obtenha os dados detalhados do chat.
 + Request (application/json)
 
 + Headers
   Accept: application/json
   X-Authorization: Bearer xxxxxxxxxx
+  
+  + Body
+  
+  {
+  "number_id": 33,
+  }
 
-+ Body
-        {
-         "chat_id": "1";
-        }
         
 + Response 200 (application/json)
     
     [
        {
-        “name”: “John Doe”,
+        "number_id": 33,
+        “name”: “John Doe”
         “phone”: 551170707070,
         “email”: “john@doe.com”,
         }
@@ -186,12 +189,14 @@ Mediante um `ID`, obtenha os dados detalhados do chat.
   Accept: application/json
   X-Authorization: Bearer xxxxxxxxxx
 
-+ Body
-        {
-         "Text": "Huggy API v3"
-        }
-        
+
 + Response 200 (application/json)
+    [
+      {
+        "chat_id": 1,
+        “name”: “John Doe”
+      }
+    ]
 + Response 201 (application/json)
 + Response 404 (application/json)   
 
@@ -206,11 +211,11 @@ Encontre dentro dessa coleção recursos para listar seu chat e obter informaç�
 + Body
      
      {
-     "Text": "Hello"...
+     "Text": "Hello!"
      }
 
 + Response 200 (application/json)
-+ Response 2001 (application/json)
++ Response 201 (application/json)
 
 ## Transfer a chat Collection [/chat/{chat_id}/transfer]
 
@@ -229,7 +234,7 @@ Envie uma mensagem de confirmação utilizando requisição `POST`
 
     + Body
     {
-     "agentID": "1234",
+     "agentID": 1234,
      "message": "transferred successfully"
     }
 + Response 200 (application/json)
@@ -268,10 +273,12 @@ Edite um recurso atribuindo um bate-papo para o agente `ID`
     X-Authorization: Bearer xxxxxxxxxx
 
 + Body
-    {  "id": 63,
+    {  "id": 33,
        "name": "john Doe",
        "email": "john@doe.com
     }
+
+// uma conexão bem sucedida em que não haverá nenhuma conteudo evolvido pelo servidor.
 + Response 204 (application/json)
 
 ## Mark read Collection [/chats/{chat_is}/read]
@@ -290,7 +297,9 @@ Marcar leitura em mensagem de chat. Um `ID` será requerido para isso.
 
     + Body
     {
-    "id": 34,
+    "id": 33,
+    "name": "john Doe",
+    "email": "john@doe.com",
     "message": "Hello, my name is John"
     }
 + Response 204 (application/json)
@@ -313,7 +322,7 @@ Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será
     + Body
     
     {
-    "department": "1"
+    "department": 1
     }
     
 + Response 204 (application/json)
@@ -334,18 +343,18 @@ Feche um chat passando o `ID` no corpo da requisição.
     
     + Body
     {
-    "chat_number": "2";
+    "number_id": 2
     }
 
-// uma conexão bem sucedida em que não haverá nenhuma conteudo evolvido pelo servidor.
 + Response 204 (application/json)
 
-## Reopen a char Collection [/chats/{chat_id}/reopen]
+## Reopen a chat Collection [/chats/{chat_id}/reopen]
 
 + Parameters 
   + chat_id (required, number)... número identificador
 
 ### Reope a chat [PUT]
+Voltar a abrir um chat. Para isso, informe os dados do recurso.
 + Request (application/json)
 
     + Headers
@@ -354,7 +363,8 @@ Feche um chat passando o `ID` no corpo da requisição.
     
     + Body
     {
-    "chat_number": "2";
+    "id": 33,
+    "name": "john Doe"
     }
 + Response 204 (application/json)
 
@@ -363,7 +373,7 @@ Feche um chat passando o `ID` no corpo da requisição.
   + chat_id (required, number)... número identificador
 
 ### Moves a chat for queue [PUT]
-
+Mova um chat para a fila. Todos os dados do seu recurso devem estar preenchidos, tais como: `ID`, `NAME` e `PHONE`.
 + Request (application/json)
 
     + Headers

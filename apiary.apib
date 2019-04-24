@@ -196,7 +196,7 @@ Mediante um `ID`, obtenha os dados detalhados do chat.
 + Response 404 (application/json)   
 
 ### Add new messages in chat [POST]
-Encontre dentro dessa coleção recursos para listar seu chat e obter uma simples informações ou adicionar uma nova mensagem
+Encontre dentro dessa coleção recursos para listar seu chat e obter informações ou adicionar uma nova mensagem
 + Request (application/json)
 
 + Headers
@@ -324,6 +324,7 @@ Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será
   + chat_id (required, number)... número identificador
 
 ### Close a chat [PUT]
+Feche um chat passando o `ID` no corpo da requisição.
 
 + Request (application/json)
 
@@ -336,6 +337,7 @@ Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será
     "chat_number": "2";
     }
 
+// uma conexão bem sucedida em que não haverá nenhuma conteudo evolvido pelo servidor.
 + Response 204 (application/json)
 
 ## Reopen a char Collection [/chats/{chat_id}/reopen]
@@ -370,7 +372,11 @@ Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será
     
     + Body
     {
+     "chat_number": 2,
+     "name": "John",
+     "phone": 9999999999
     }
+    
     
 + Response 204 (application/json)
 
@@ -379,7 +385,7 @@ Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será
 + Parameters 
   + chat_id (required, number)... número identificador
 
-### Chages a chat situation [PUT]
+### Changes a chat situation [PUT]
 
 + Request (application/json)
 
@@ -391,7 +397,8 @@ Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será
     {
     "situation": "wait_for_chat"
     }
-+ Response 200 (application/json)
++ Response 204 (application/json)
+    
 
 ## List a chat Collection [/chats/{chat_id}/tags]
 + Parameters 
@@ -410,23 +417,23 @@ Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será
      "tags": "tag1", "tag2", "tag3"
     }
     
-+ Response 200 (application/json)
++ Response 204 (application/json)
 
 ## List chats Collection [/chats/?situation=wait_for_chat]
 
 ### List chats on queue[GET]
 
 + Response 200 (application/json)
-[
-    {
-    "situation": "wait_for_chat"
-    }
-]
+    [
+        {
+         "situation": "wait_for_chat"
+        }
+    ]
 
 ### List chats in attendance [GET]
 + Response 200 (application/json)
-[
-    {
-    "situation": "wait_for_chat"
-    }
-]
+    [
+        {
+         "situation": "wait_for_chat"
+        }
+    ]

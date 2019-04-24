@@ -69,7 +69,7 @@ Limitado a 20 resultados. Os recursos remanescentes (se existir) podem ser acess
 + Response 404 (application/json)
 
             {
-             "message": "Page not found"
+             "message": "[]"
             }
    
 ## Create a chat Collection [/chats/{channel}]
@@ -95,55 +95,55 @@ The channels of chat can be:
  + Body
   
     {
-        “name”: “John Doe”,
-        “phone”: 551170707070,
-        “email”: “john@doe.com”,
-        “message”: “Hello!”,
-        “department”: 1,
-        “subject”: “Create a new chat”
+       "name": "John Doe",
+       "phone": 551170707070,
+       "email": "john@doe.com",
+       "message": "Hello!",
+       "departament": 1,
+       "subject": "create a new chat"
     }
     
-+ Response 200 (application/json)   
++ Response 201 (application/json)   
     
   [ 
-    {
-       “name”: “John Doe”,
-       “phone”: 551170707070,
-       “email”: “john@doe.com”,
-       “message”: “Hello!”,
-       “department”: 1,
-       “subject”: “Create a new chat”
+    {  "number_id": 33, 
+       "name": "John Doe",
+       "phone": 551170707070,
+       "email": "john@doe.com",
+       "message": "Hello!",
+       "departament": 1,
+       "subject": "create a new chat"
     } 
   ]
   
 + Request (appliation/json)
 
   + Headers
- 
   Accept: application/json
   X-Authorization: Bearer xxxxxxxxxx
 
  + Body
     {
-       “name”: “John Doe”,
-       “phone”: 551170707070,
-       “email”: “john@doe.com”,
-       “message”: “Hello!”,
-       “department”: 1,
-       “subject”: “Create a new chat”,
-       “channelID”: 123 (more than an email)
+       "name": "John Doe",
+       "phone": 551170707070,
+       "email": "john@doe.com",
+       "message": "Hello!",
+       "departament": 1,
+       "subject": "create a new chat"
+       "channelID": 123 (more than an email)
     }
-+ Response 200 (application/json)
++ Response 201 (application/json)
  
  [
-    {
-       “name”: “John Doe”,
-       “phone”: 551170707070,
-       “email”: “john@doe.com”,
-       “message”: “Hello!”,
-       “department”: 1,
-       “subject”: “Create a new chat”,
-       “channelID”: 123 (more than an email)
+    {  
+       "number_id": 33,
+       "name": "John Doe",
+       "phone": 551170707070,
+       "email": "john@doe.com",
+       "message": "Hello!",
+       "departament": 1,
+       "subject": "create a new chat"
+       "channelID": 123 (more than an email)
     }
 ]
 

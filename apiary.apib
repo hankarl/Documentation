@@ -79,12 +79,17 @@ Limitado a 20 resultados. Os recursos remanescentes (se existir) podem ser acess
 
 ### Create a new chat [POST]
 
-The channels of chat can be:    
+Os canais de bate-papo podem ser:    
 
-  
   1: whatsapp      
   2: telegram      
   3: email   
+  
+  Crie um recurso, passando uma requisição com os atributos `name`, `phone`, `email`,
+`message`, `departament`, e `subject` quando utilizar o canal **whatsapp** e **telegram**.
+  
+  Para canais de **email**, adicione o atributo `channelID` o qual poderá receber mais de um email.
+  
    
 + Request (appliation/json)
 
@@ -182,7 +187,7 @@ Mediante um `ID`, obtenha os dados detalhados do chat.
   + chat_id (required, number)... número identificador      
 
 ### List chat Collection [GET]  
-
+Essa ação lhe permite obter o `ID` e o `nome` no recurso chat.
 + Request Text (application/json)
 
 + Headers
@@ -201,7 +206,7 @@ Mediante um `ID`, obtenha os dados detalhados do chat.
 + Response 404 (application/json)   
 
 ### Add new messages in chat [POST]
-Encontre, dentro desta coleção, recursos para listar seu chat e obter informações ou adicionar uma nova mensagem
+Crie um nova mensagem, passando seu `atributo` e `valor` no corpo de sua requisição.
 + Request (application/json)
 
 + Headers
@@ -243,7 +248,12 @@ Envie uma mensagem de confirmação utilizando requisição `POST`
 + Parameters 
   + chat_id (required, number)... número identificador                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      id (required, number)... número identificador      
 
-### Add an agent in char [POST]
+### Add an agent in chat [POST]
+Crie um novo agent, passando em sua requisição ao servidor seu número identificador
+`agentID`.
+
+Um ***status*** `201` lhe será retornado por meio dessa representação,
+indicando que sua requisição obteve sucesso e que seu agent foi criado.
 
 + Request (application/json)
 
@@ -255,7 +265,7 @@ Envie uma mensagem de confirmação utilizando requisição `POST`
     {
      "agentID": "1234"
     }
-+ Response 200 (application/json)
++ Response 201 (application/json)
 
 ## Assign a chat Collection [/chats/{chat_id}/AssignToMe]
 
@@ -311,7 +321,7 @@ Marcar leitura em mensagem de chat. Um `ID` será requerido para isso.
 
 ### Updates a chat department [PUT]
 
-Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será necessário para especificar sua atualização.
+Atualize o recurso departamento utilizando uma requisição `PUT`. Um `ID` será requerido para especificar sua atualização.
 
 + Request (application/json)
 
@@ -373,7 +383,7 @@ Voltar a abrir um chat. Para isso, informe os dados do recurso.
   + chat_id (required, number)... número identificador
 
 ### Moves a chat for queue [PUT]
-Mova um chat para a fila. Todos os dados do seu recurso devem estar preenchidos, tais como: `ID`, `NAME` e `PHONE`.
+Mova um chat para a fila. Todos os dados do seu recurso devem estar preenchidos, tais como: `chat_number`, `name` e `phone`.
 + Request (application/json)
 
     + Headers
@@ -396,6 +406,8 @@ Mova um chat para a fila. Todos os dados do seu recurso devem estar preenchidos,
   + chat_id (required, number)... número identificador
 
 ### Changes a chat situation [PUT]
+
+Atualize a situação de status do chat atribuindo um novo um valor ao atributo `situation`.
 
 + Request (application/json)
 
